@@ -51,29 +51,25 @@ class MainActivity : AppCompatActivity() {
             button.setOnClickListener{
                 if (name.length() < 3 || !name.text.any { it.isLetter() }){
                     name.error = "შეიყვანეთ სწორი მონაცემი "
-                    return@setOnClickListener
                 }
                 else if (lastName.length() < 5 || !lastName.text.any { it.isLetter() }){
                     lastName.error = "შეიყვანეთ სწორი მონაცემი"
-                    return@setOnClickListener
                 }
                 else if (!(emailRegex.matcher(email.text).matches())){
                     email.error = "შეიყვანეთ სწორი email"
-                    return@setOnClickListener
-
                 }
                 else if(password.length() < 8 || !(password.text.any{it in symbols})){
                     password.error = "შეიყვანეთ მინიმუმ 8 სიმბოლო და ერთი ციფრი"
-                    return@setOnClickListener
                 }
                 else if(!(checkBox.isChecked)){
-                    checkBox.error = "გთხოვთ მონიშნეთ ველი"
-                    return@setOnClickListener
+
+                    Toast.makeText(this, "მონიშნეთ რომ ეტანხმებიტ პირობებს", Toast.LENGTH_SHORT).show()
 
                 }
-
-
-                Toast.makeText(this, "თქვენ წარმატებით გაიარეთ რეგისტრაცია", Toast.LENGTH_SHORT).show()
+                else {
+                    Toast.makeText(this, "თქვენ წარმატებით გაიარეთ რეგისტრაცია", Toast.LENGTH_SHORT)
+                        .show()
+                }
 
             }
 
